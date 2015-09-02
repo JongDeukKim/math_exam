@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<title>Multiply Example</title>
+
+	<meta charset="utf-8">
+
+	<style>
+		table.a { 
+		    border: 1px solid black;
+            border-spacing: 10px;
+		}
+        td.formular {
+            text-align:right;
+            vertical-align:top;
+            border-spacing: 50px;
+            padding-left:20px;
+            padding-bottom:16px;
+        }
+        td.num {
+            text-align:left;
+            vertical-align:top;
+            padding-left:50px;
+        }
+	</style>
+
+	<script>
+	function genExample() {
+	    //body reference 
+	    var xNum = 4;
+	    var yNum = 13;
+        var exNumber = 1;
+        var body = document.getElementById("magicNum");
+
+        // create elements <table> and a <tbody>
+        var tbl     = document.createElement("table");
+        var tblBody = document.createElement("tbody");
+
+        // cells creation
+        for (var j = 0; j <= yNum; j++) {
+            // table row creation
+            var row = document.createElement("tr");
+
+            for (var i = 0; i < xNum; i++) {
+                // create element <td> and text node 
+                //Make text node the contents of <td> element
+                // put <td> at end of the table row
+                 var cellNum = document.createElement("td");
+                 var typ = document.createAttribute("class");
+                 typ.value = "num";
+                 cellNum.attributes.setNamedItem(typ);
+                 cellNum.appendChild(document.createTextNode(exNumber + ")"));  
+                 var cell = document.createElement("td");    
+
+                  //var cellText = document.createTextNode(randGugudan()); 
+                 var cellP = document.createElement("p");
+                 var cellText = randGugudan();
+                 cellP.innerHTML = cellText;
+                 var typ2 = document.createAttribute("class");
+                typ2.value = "formular";
+                cell.attributes.setNamedItem(typ2);
+                cell.appendChild(cellP);
+                row.appendChild(cellNum);
+                row.appendChild(cell);
+
+                exNumber ++;
+            }
+
+            //row added to end of table body
+            tblBody.appendChild(row);
+        }
+
+        // append the <tbody> inside the <table>
+        tbl.appendChild(tblBody);
+        // put <table> in the <body>
+
+        if(body.hasChildNodes() == true)
+        {
+        	body.replaceChild(tbl, body.childNodes[0]);
+        }
+        else
+        {
+        	body.appendChild(tbl);
+        }
+
+        // tbl border attribute to 
+        //tbl.setAttribute("border", "2");
+
+        document.getElementById("control").style.display = "none";
+    }
+
+    function randGugudan()
+    {
+        var i;
+        var outFormular = "";
+    	var vMin = [ document.getElementById("var1Min").value, 
+    	             document.getElementById("var2Min").value ];
+    	var vMax = [ document.getElementById("var1Max").value,
+    	             document.getElementById("var2Max").value ];
+        var genVar = [-1, -1];
+
+        for(i=0; i<2; i++)
+        {
+            var vRange = vMax[i] - vMin[i] + 1;
+            var randNum = Math.random()*1000.0;
+            randNum = Math.round(randNum);
+
+            genVar[i] = randNum % vRange + parseInt(vMin[i]);
+        }
+
+        outFormular = genVar[0] + "<br> x&nbsp;&nbsp " + genVar[1] + "<br><hr><br> ";
+
+
+    	//var x = Math.round((Math.random() * 100)) % 89 +10;
+    	//var y = Math.round((Math.random() * 10)) % 9 +1;
+
+    	return outFormular;
+    }
+
+    function showControl()
+    {
+        document.getElementById("control").style.display = "block";
+    }
+    </script>
+
+</header>
+<!--<body onload="genExample()"> -->
+<body>
+<h1>곱하기 문제 </h1>
+<button type="button" onclick="genExample()">Generate Example</button>
+<button type="button" onClick="showControl()">Show Options</button> <br>
+<div id="control">
+	<ul>
+  	  <li> Var1 : Min value 
+	    <input id="var1Min" type="number" value="10" min="1" max="999">
+	    Max value 
+	    <input id="var1Max" type="number" value="99" min="1" max="999"> </li>
+	  <li> Var2 : Min value 
+	  	<input id="var2Min" type="number" value="1" min="1" max="999">
+	    Max value 
+	    <input id="var2Max" type="number" value="9" min="1" max="999"></li>
+	</ul> 
+</div>   
+<div id="magicNum"> ----- </div>
+ 
+</body>
+</html> 
