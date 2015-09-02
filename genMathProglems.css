@@ -1,0 +1,17 @@
+
+table.a { 
+    border: 1px solid black;
+    border-spacing: 10px;
+}
+td.formular {
+    text-align:right;
+    vertical-align:top;
+    border-spacing: 50px;
+    padding-left:20px;
+    padding-bottom:16px;
+}
+td.num {
+    text-align:left;
+    vertical-align:top;
+    padding-left:50px;
+}

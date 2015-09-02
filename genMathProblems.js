@@ -19,18 +19,18 @@ function genExample() {
             // create element <td> and text node 
             //Make text node the contents of <td> element
             // put <td> at end of the table row
-             var cellNum = document.createElement("td");
-             var typ = document.createAttribute("class");
-             typ.value = "num";
-             cellNum.attributes.setNamedItem(typ);
-             cellNum.appendChild(document.createTextNode(exNumber + ")"));  
-             var cell = document.createElement("td");    
+            var cellNum = document.createElement("td");
+            var typ = document.createAttribute("class");
+            typ.value = "num";
+            cellNum.attributes.setNamedItem(typ);
+            cellNum.appendChild(document.createTextNode(exNumber + ")"));  
+            var cell = document.createElement("td");    
 
-              //var cellText = document.createTextNode(randGugudan()); 
-             var cellP = document.createElement("p");
-             var cellText = randGugudan();
-             cellP.innerHTML = cellText;
-             var typ2 = document.createAttribute("class");
+            //var cellText = document.createTextNode(randGugudan()); 
+            var cellP = document.createElement("p");
+            var cellText = randGugudan();
+            cellP.innerHTML = cellText;
+            var typ2 = document.createAttribute("class");
             typ2.value = "formular";
             cell.attributes.setNamedItem(typ2);
             cell.appendChild(cellP);
