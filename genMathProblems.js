@@ -57,9 +57,6 @@ function genExample() {
     	body.appendChild(tbl);
     }
 
-    // tbl border attribute to 
-    //tbl.setAttribute("border", "2");
-
     document.getElementById("control").style.display = "none";
 }
 
@@ -83,10 +80,6 @@ function randGugudan()
     }
 
     outFormular = genVar[0] + "<br> x&nbsp;&nbsp " + genVar[1] + "<br><hr><br> ";
-
-
-	//var x = Math.round((Math.random() * 100)) % 89 +10;
-	//var y = Math.round((Math.random() * 10)) % 9 +1;
 
 	return outFormular;
 }
