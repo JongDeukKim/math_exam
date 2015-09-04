@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<header>
+	<title>Mathmatical Example</title>
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="genMathProglems.css">
+    <script src="genMathProblems.js"></script>
+</header>
+<!--<body onload="genExample()"> -->
+<body>
+    <h2>연산 문제 </h2>
+    <button type="button" onclick="genExample()">Generate Example</button>
+    <button type="button" onClick="showControl()">Show Options</button> <br>
+    <div id="control">
+    	<ul>
+          <li> Problem Type : 
+            <input id="problemType" type="radio" name="problemType" value="plus" checked/> 더하기
+            <input id="problemType" type="radio" name="problemType" value="minus"/> 빼기
+            <input id="problemType" type="radio" name="problemType" value="multiply"/> 곱하기
+          </li> 
+          <li> Number of problems :  
+            <input id="probNum" type="number" value="50" min="5" max="100"> </li>
+      	  <li> Var1 : Min value 
+    	    <input id="var1Min" type="number" value="10" min="1" max="999">
+    	    Max value 
+    	    <input id="var1Max" type="number" value="99" min="1" max="999"> </li>
+    	  <li> Var2 : Min value 
+    	  	<input id="var2Min" type="number" value="1" min="1" max="999">
+    	    Max value 
+    	    <input id="var2Max" type="number" value="9" min="1" max="999"></li>
+    	</ul> 
+    </div>   
+    <div id="magicNum"> ----- </div>
+ 
+</body>
+</html> 

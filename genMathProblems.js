@@ -1,10 +1,13 @@
 
 function genExample(rows, columns) {
     //body reference 
-    var xNum = 4;
-    var yNum = 13;
+    var xNum = 5;
+    var yNum = 11;
     var exNumber = 1;
     var body = document.getElementById("magicNum");
+    var totalNum = document.getElementById("probNum").value;
+    yNum = (totalNum / xNum);
+    yNum = Math.ceil(yNum);
 
     // create elements <table> and a <tbody>
     var tbl     = document.createElement("table");
@@ -21,33 +24,22 @@ function genExample(rows, columns) {
     }
 
     // cells creation
-    for (var j = 0; j <= yNum; j++) {
+    for (var j = 0; j < yNum; j++) {
         // table row creation
         var row = document.createElement("tr");
 
         for (var i = 0; i < xNum; i++) {
-            // create element <td> and text node 
-            //Make text node the contents of <td> element
-            // put <td> at end of the table row
-            var cellNum = document.createElement("td");
-            var typ = document.createAttribute("class");
-            typ.value = "num";
-            cellNum.attributes.setNamedItem(typ);
-            cellNum.appendChild(document.createTextNode(exNumber + ")"));  
-            var cell = document.createElement("td");    
 
-            //var cellText = document.createTextNode(randGugudan()); 
-            var cellP = document.createElement("p");
-            var cellText = randGugudan();
-            cellP.innerHTML = cellText;
-            var typ2 = document.createAttribute("class");
-            typ2.value = "formular";
-            cell.attributes.setNamedItem(typ2);
-            cell.appendChild(cellP);
-            row.appendChild(cellNum);
-            row.appendChild(cell);
+            var cellProblem = document.createElement("td");
+            cellProblem.appendChild(createOneExample(exNumber));
+            row.appendChild(cellProblem);
 
             exNumber ++;
+
+            if(exNumber > totalNum)
+            {
+                break;
+            }
         }
 
         //row added to end of table body
@@ -70,7 +62,38 @@ function genExample(rows, columns) {
     document.getElementById("control").style.display = "none";
 }
 
-function randGugudan()
+function createOneExample(exNumber)
+{
+    var tbl     = document.createElement("table");
+    var typ     = document.createAttribute("class");
+    typ.value   = "problem";
+    tbl.attributes.setNamedItem(typ);
+    var tblBody = document.createElement("tbody");
+    var row     = document.createElement("tr");
+    var cellNum = document.createElement("td");
+    var typ1     = document.createAttribute("class");
+    typ1.value   = "num";
+    cellNum.attributes.setNamedItem(typ1);
+    cellNum.appendChild(document.createTextNode(exNumber + ")"));  
+
+    var cell    = document.createElement("td"); 
+    var cellP   = document.createElement("div");
+    var cellText = randProblem();
+    cellP.innerHTML = cellText;
+    var typ2    = document.createAttribute("class");
+    typ2.value  = "formular";
+    cell.attributes.setNamedItem(typ2);
+    cell.appendChild(cellP);
+    row.appendChild(cellNum);
+    row.appendChild(cell);
+
+    tblBody.appendChild(row);
+    tbl.appendChild(tblBody);
+
+    return tbl;
+}
+
+function randProblem()
 {
     var i;
     var outFormular = "";
@@ -79,6 +102,18 @@ function randGugudan()
 	var vMax = [ document.getElementById("var1Max").value,
 	             document.getElementById("var2Max").value ];
     var genVar = [-1, -1];
+    //var type = document.getElementById("problemType").value;
+    var type = document.querySelector('input[name="problemType"]:checked').value;
+
+    var operator = "+";
+    if(type == "minus")
+    {
+        operator = "-";
+    }
+    else if(type == "multiply")
+    {
+        operator = "x";
+    }
 
     for(i=0; i<2; i++)
     {
@@ -89,7 +124,7 @@ function randGugudan()
         genVar[i] = randNum % vRange + parseInt(vMin[i]);
     }
 
-    outFormular = genVar[0] + "<br> x&nbsp;&nbsp " + genVar[1] + "<br><hr><br> ";
+    outFormular = genVar[0] + "<br> " + operator + "&nbsp;&nbsp " + genVar[1] + "<br><hr><br> ";
 
 	return outFormular;
 }
