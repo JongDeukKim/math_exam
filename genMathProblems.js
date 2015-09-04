@@ -1,5 +1,5 @@
 
-function genExample() {
+function genExample(rows, columns) {
     //body reference 
     var xNum = 4;
     var yNum = 13;
@@ -9,6 +9,16 @@ function genExample() {
     // create elements <table> and a <tbody>
     var tbl     = document.createElement("table");
     var tblBody = document.createElement("tbody");
+
+    if(rows != undefined && rows > 0)
+    {
+        yNum = rows;
+    }
+
+    if(columns != undefined && columns > 0)
+    {
+        xNum = columns;
+    }
 
     // cells creation
     for (var j = 0; j <= yNum; j++) {
