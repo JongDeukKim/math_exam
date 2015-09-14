@@ -5,7 +5,11 @@ function genExample() {
     var yNum = 11;
     var exNumber = 1;
     var body = document.getElementById("magicNum");
-    var totalNum = document.getElementById("probNum").value;
+    var totalNum = 10;
+    if(typeof(Storage) !== "undefined") 
+    {
+        totalNum = sessionStorage.probNum;
+    }
     yNum = (totalNum / xNum);
     yNum = Math.ceil(yNum);
 
@@ -49,7 +53,7 @@ function genExample() {
     	body.appendChild(tbl);
     }
 
-    document.getElementById("control").style.display = "none";
+    //document.getElementById("control").style.display = "none";
 }
 
 function createOneExample(exNumber)
@@ -87,13 +91,25 @@ function randProblem()
 {
     var i;
     var outFormular = "";
-	var vMin = [ document.getElementById("var1Min").value, 
+    var genVar = [-1, -1];
+	/*var vMin = [ document.getElementById("var1Min").value, 
 	             document.getElementById("var2Min").value ];
 	var vMax = [ document.getElementById("var1Max").value,
 	             document.getElementById("var2Max").value ];
-    var genVar = [-1, -1];
+    
     //var type = document.getElementById("problemType").value;
-    var type = document.querySelector('input[name="problemType"]:checked').value;
+    var type = document.querySelector('input[name="problemType"]:checked').value;*/
+    var type = "plus";
+    var vMin = [1, 1];
+    var vMax = [99, 99];
+    if(typeof(Storage) !== "undefined") 
+    {
+        type = sessionStorage.type;
+        vMin[0] = sessionStorage.var1Min;
+        vMax[0] = sessionStorage.var1Max;
+        vMin[1] = sessionStorage.var2Min;
+        vMax[1] = sessionStorage.var2Max;
+    }
 
     var operator = "+";
     if(type == "minus")

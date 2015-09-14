@@ -4,13 +4,37 @@
 	<title>Mathmatical Example</title>
 	<meta charset="utf-8">
     <link rel="stylesheet" href="genMathProglems.css">
-    <script src="genMathProblems.js"></script>
+    <script>
+        function setMathSetting(type, var1Min, var1Max, var2Min, var2Max, num) 
+        {
+            if(typeof(Storage) !== "undefined") 
+            {
+                sessionStorage.type = type;
+                sessionStorage.var1Min = var1Min;
+                sessionStorage.var1Max = var1Max;
+                sessionStorage.var2Min = var2Min;
+                sessionStorage.var2Max = var2Max;
+                sessionStorage.probNum = num;
+            }
+        }
+        function genExample()
+        {
+            var vMin = [ document.getElementById("var1Min").value, 
+                         document.getElementById("var2Min").value ];
+            var vMax = [ document.getElementById("var1Max").value,
+                         document.getElementById("var2Max").value ];
+            var type = document.querySelector('input[name="problemType"]:checked').value;
+            var num = document.getElementById("probNum").value;
+
+            setMathSetting(type, vMin[0], vMax[0], vMin[1], vMax[1], num);
+
+            window.open("math_result.html", "_self");
+        }
+    </script>
 </header>
-<!--<body onload="genExample()"> -->
+
 <body>
     <h2>연산 문제 </h2>
-    <button type="button" onclick="genExample()">Generate Example</button>
-    <button type="button" onClick="showControl()">Show Options</button> <br>
     <div id="control">
     	<ul>
           <li> Problem Type : 
@@ -30,7 +54,8 @@
     	    <input id="var2Max" type="number" value="9" min="1" max="999"></li>
     	</ul> 
     </div>   
-    <div id="magicNum"> ----- </div>
+
+    <button type="button" onclick="genExample()">Generate Example</button>
  
 </body>
 </html> 
