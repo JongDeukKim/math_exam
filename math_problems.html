@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <header>
-	<title>Mathmatical Example</title>
+	<title>Arithmetic Operation Problems Setting</title>
 	<meta charset="utf-8">
-    <link rel="stylesheet" href="genMathProglems.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
         function setMathSetting(type, var1Min, var1Max, var2Min, var2Max, num) 
         {
@@ -34,28 +37,57 @@
 </header>
 
 <body>
-    <h2>연산 문제 </h2>
-    <div id="control">
-    	<ul>
-          <li> Problem Type : 
-            <input id="problemType" type="radio" name="problemType" value="plus" checked/> 더하기
-            <input id="problemType" type="radio" name="problemType" value="minus"/> 빼기
-            <input id="problemType" type="radio" name="problemType" value="multiply"/> 곱하기
-          </li> 
-          <li> Number of problems :  
-            <input id="probNum" type="number" value="50" min="5" max="100"> </li>
-      	  <li> Var1 : Min value 
-    	    <input id="var1Min" type="number" value="10" min="1" max="999">
-    	    Max value 
-    	    <input id="var1Max" type="number" value="99" min="1" max="999"> </li>
-    	  <li> Var2 : Min value 
-    	  	<input id="var2Min" type="number" value="1" min="1" max="999">
-    	    Max value 
-    	    <input id="var2Max" type="number" value="9" min="1" max="999"></li>
-    	</ul> 
-    </div>   
+<div class="container">
+    <h2>Arithmetic Operation Problems Setting</h2> 
+    <hr>
 
-    <button type="button" onclick="genExample()">Generate Example</button>
- 
+    <form class="form-horizontal" role="form">
+    	<div class="form-group">
+    		 <label class="col-sm-3 control-label">Problem Type</label>
+	    	<label class="radio-inline">
+		      <input id="problemType" type="radio" name="problemType" value="plus" checked>Plus
+		    </label>
+		    <label class="radio-inline">
+		      <input id="problemType" type="radio" name="problemType" value="minus">Minus
+		    </label>
+		    <label class="radio-inline">
+		      <input id="problemType" type="radio" name="problemType" value="multiply">Multiply
+		    </label>
+		</div>    
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Number of Problems</label>
+	      <div class="col-sm-2">
+	      	<input class="form-control" id="probNum" type="number" value="50">
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Variable 1 Min</label>
+	      <div class="col-sm-2 control-label">
+	      	<input class="form-control" id="var1Min" type="number" value="10">
+	      </div>
+	    </div>
+	    <div class="form-group">
+		  <label class="col-sm-3 control-label"> Max </label>
+		    <div class="col-sm-2 control-label">
+		      <input class="form-control" id="var1Max" type="number" value="99">
+		    </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="col-sm-3 control-label">Variable 2 Min</label>
+	      <div class="col-sm-2 control-label">
+	      	<input class="form-control" id="var2Min" type="number" value="1">
+	      </div>
+	    </div>
+	    <div class="form-group">
+		  <label class="col-sm-3 control-label"> Max </label>
+		    <div class="col-sm-2 control-label">
+		      <input class="form-control" id="var2Max" type="number" value="9">
+		    </div>
+	    </div>
+	    <button class="col-sm-6 btn btn-primary" type="button" onclick="genExample()">Generate Problems</button>
+	</form>
+
+
+</div> 
 </body>
 </html> 
