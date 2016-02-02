@@ -52,8 +52,6 @@ function genExample() {
     {
     	body.appendChild(tbl);
     }
-
-    //document.getElementById("control").style.display = "none";
 }
 
 function createOneExample(exNumber)
@@ -92,13 +90,6 @@ function randProblem()
     var i;
     var outFormular = "";
     var genVar = [-1, -1];
-	/*var vMin = [ document.getElementById("var1Min").value, 
-	             document.getElementById("var2Min").value ];
-	var vMax = [ document.getElementById("var1Max").value,
-	             document.getElementById("var2Max").value ];
-    
-    //var type = document.getElementById("problemType").value;
-    var type = document.querySelector('input[name="problemType"]:checked').value;*/
     var type = "plus";
     var vMin = [1, 1];
     var vMax = [99, 99];
@@ -127,8 +118,6 @@ function randProblem()
         var margin = genVar[0] % genVar[1];
         genVar[0] = genVar[0] + (genVar[1] - margin);
 
-
-        //outFormular = genVar[0] + "&nbsp;&divide;&nbsp;" + genVar[1] + " = " + genVar[0]/genVar[1];
         outFormular = "<table border=0 cellpadding=0 cellspacing=0>\
                             <tr>\
                                 <td></td>\
