@@ -111,16 +111,6 @@ function randProblem()
         vMax[1] = sessionStorage.var2Max;
     }
 
-    var operator = "+";
-    if(type == "minus")
-    {
-        operator = "-";
-    }
-    else if(type == "multiply")
-    {
-        operator = "x";
-    }
-
     for(i=0; i<2; i++)
     {
         var vRange = vMax[i] - vMin[i] + 1;
@@ -130,8 +120,49 @@ function randProblem()
         genVar[i] = randNum % vRange + parseInt(vMin[i]);
     }
 
-    outFormular = genVar[0] + "<br> " + operator + "&nbsp;&nbsp " + genVar[1] + "<br><hr><br> ";
 
+    if(type == "divide")
+    {
+        var multiple = genVar[0] * genVar[1];
+        var margin = genVar[0] % genVar[1];
+        genVar[0] = genVar[0] + (genVar[1] - margin);
+
+
+        //outFormular = genVar[0] + "&nbsp;&divide;&nbsp;" + genVar[1] + " = " + genVar[0]/genVar[1];
+        outFormular = "<table border=0 cellpadding=0 cellspacing=0>\
+                            <tr>\
+                                <td></td>\
+                                <td></td>\
+                                <td valign=bottom align=left></td>\
+                            </tr>\
+                            <tr>\
+                                <td></td>\
+                                <td rowspan=2 valign=bottom align=right>\
+                                    <img src='./images/div-imgL.gif' height=30 width=10></td>\
+                                <td valign=top align=left>\
+                                    <img src='./images/div-imgR.gif' width=30 height=9></td>\
+                            </tr>\
+                            <tr>\
+                                <td valign=top align=left>"+ genVar[1] + "</td>\
+                                <td valign=top align=center>" + genVar[0] + " </td>\
+                            </tr>\
+                        </table>";        
+    }
+    else 
+    {
+        var operator = "+";
+        if(type == "minus")
+        {
+            operator = "-";
+        }
+        else if(type == "multiply")
+        {
+            operator = "x";
+        }
+
+
+        outFormular = genVar[0] + "<br> " + operator + "&nbsp;&nbsp " + genVar[1] + "<br><hr><br> ";
+    }
 	return outFormular;
 }
 
