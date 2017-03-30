@@ -114,9 +114,16 @@ function randProblem()
 
     if(type == "divide")
     {
-        var multiple = genVar[0] * genVar[1];
+        /* var multiple = genVar[0] * genVar[1];
         var margin = genVar[0] % genVar[1];
-        genVar[0] = genVar[0] + (genVar[1] - margin);
+        genVar[0] = genVar[0] + (genVar[1] - margin); */
+	var reminder = genVar[0] % genVar[1];
+	var newVar0 = genVar[0] - reminder;
+	if(newVar0 <= 0) {
+		newVar0 += reminder;
+	}
+	genVar[0] = newVar0;    
+	    
 
         outFormular = "<table border=0 cellpadding=0 cellspacing=0>\
                             <tr>\
